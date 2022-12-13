@@ -27,7 +27,7 @@ docker run -d \
   -v /mnt/user/appdata/xteve/_guide2go/:/guide2go:rw \
   -v /tmp/xteve/:/tmp/xteve:rw \
   -v /mnt/user/appdata/tvheadend/data/:/TVH \
-  alturismo/xteve_guide2go
+  jjm2473/xteve_guide2go
 ```
 
 setup guide2go SD subscrition as follows or copy your existing .yaml files into your mounted /guide2go folder \

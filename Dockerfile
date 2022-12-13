@@ -1,9 +1,10 @@
 FROM alpine:latest
+
+ARG TARGETPLATFORM
+
 RUN apk update
 RUN apk upgrade
 RUN apk add --no-cache ca-certificates
-
-MAINTAINER alturismo alturismo@gmail.com
 
 # Extras
 RUN apk add --no-cache curl
@@ -28,8 +29,8 @@ RUN apk add vlc
 RUN sed -i 's/geteuid/getppid/' /usr/bin/vlc
 
 # Add xTeve and guide2go
-RUN wget https://github.com/xteve-project/xTeVe-Downloads/raw/master/xteve_linux_amd64.zip -O temp.zip; unzip temp.zip -d /usr/bin/; rm temp.zip
-ADD guide2go /usr/bin/guide2go
+ADD bin/$TARGETPLATFORM/xteve /usr/bin/xteve
+ADD bin/$TARGETPLATFORM/guide2go /usr/bin/guide2go
 ADD cronjob.sh /
 ADD entrypoint.sh /
 ADD sample_cron.txt /
